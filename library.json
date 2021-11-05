@@ -1,0 +1,16 @@
+{
+  "name" : "corgidude ai",
+  "title": "CorgiDude Ai",
+  "category" : "Sensors",
+  "keywords": "corgidude ai",
+  "description": "บอร์ดที่ช่วยให้ ESP32 สามารถใช้งาน ตรวจจับวัตถุจากภาพได้เป็นอย่างดี",
+  "homepage": "https://github.com/MakerAsia/KB-CorgiDude-Ai",
+  "license": "MIT",
+  "git": "https://github.com/MakerAsia/KB-CorgiDude-Ai",
+  "author": "TONG_CMMC",
+  "url": "https://www.aiiotshop.com/",
+  "version": "1.0.0",
+  "board" : "",
+  "platform": ["arduino-esp32"],
+  "image" : "/static/display.PNG"
+}
