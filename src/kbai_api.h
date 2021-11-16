@@ -373,4 +373,14 @@ uint8_t focus(int8_t _focus) {
   return raw;
 }
 
+void write_register(uint8_t reg = 0, uint8_t val = 0) {
+  delay(3);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(reg);
+  Wire1.write(val);
+  Wire1.endTransmission();
+
+}
+
+
 #endif

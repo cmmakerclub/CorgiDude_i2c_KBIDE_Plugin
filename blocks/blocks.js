@@ -393,7 +393,8 @@ Blockly.Blocks['__vflip'] = {
     this.appendDummyInput()
         .appendField("set vflip")
         .appendField(new Blockly.FieldDropdown([["true","1"], ["false","0"]]), "_vflip");
-    this.setOutput(true, "Number");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -404,7 +405,8 @@ Blockly.Blocks['__hmirror'] = {
     this.appendDummyInput()
         .appendField("set hmirror")
         .appendField(new Blockly.FieldDropdown([["true","1"], ["false","0"]]), "_hmirror");
-    this.setOutput(true, "Number");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
     this.setColour(230);
  this.setTooltip("");
  this.setHelpUrl("");
@@ -492,10 +494,11 @@ Blockly.Blocks['face_recognition_del'] = {
 //  this.setHelpUrl("");
 //   }
 // };
+
 Blockly.Blocks['save_image_data_collection'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Save image data collection");
+        .appendField("Save image data collection (dokeycar)");
     this.appendValueInput("fb_fb")
         .setCheck(null)
         .appendField("FB");
@@ -508,11 +511,12 @@ Blockly.Blocks['save_image_data_collection'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
- this.setTooltip("ใว้ใช้ในการเก็บดาด้าเช็ต");
+    this.setColour(45);
+ this.setTooltip("สำหรับเก็บดาด้าเช็ต (dokeycar)");
  this.setHelpUrl("");
   }
 };
+
 Blockly.Blocks['aidude_mobilenet_regression_custom'] = {
   init: function() {
     this.appendDummyInput()
@@ -527,7 +531,7 @@ Blockly.Blocks['aidude_mobilenet_regression_custom'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(45);
- this.setTooltip("Mobilenet Image Classification");
+ this.setTooltip("สำหรับวิ่ง (dokeycar)");
  this.setHelpUrl("");
   }
 };

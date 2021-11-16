@@ -20,8 +20,8 @@ Blockly.JavaScript['aidude_yolo_20_class'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -59,8 +59,8 @@ Blockly.JavaScript['aidude_yolo_custom'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -96,8 +96,8 @@ Blockly.JavaScript['aidude_mobilenet_custom'] = function(block) {
       #END
       if(new_data_available() == 1){
         uint8_t _obj[30];
-        uint8_t counds = classification(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
           int  __confidence = _obj[(i*3)+2];
 
@@ -129,8 +129,8 @@ Blockly.JavaScript['aidude_mobilenet'] = function(block) {
       #END
       if(new_data_available() == 1){
         uint8_t _obj[30];
-        uint8_t counds = classification(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
           int  __confidence = _obj[(i*3)+2];
 
@@ -164,8 +164,8 @@ Blockly.JavaScript['aidude_face_detection'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -201,8 +201,8 @@ Blockly.JavaScript['aidude_face_recognition'] = function(block) {
       #END
       if(new_data_available() == 1){
         uint8_t _obj[30];
-        uint8_t counds = classification(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
           int  __confidence = _obj[(i*3)+2];
 
@@ -236,8 +236,8 @@ Blockly.JavaScript['aidude_facemask_detection'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -275,8 +275,8 @@ Blockly.JavaScript['aidude_hand_detection'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -312,8 +312,8 @@ Blockly.JavaScript['aidude_garbage_classification'] = function(block) {
       #END
       if(new_data_available() == 1){
         uint8_t _obj[30];
-        uint8_t counds = classification(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
           int  __confidence = _obj[(i*3)+2];
 
@@ -347,8 +347,8 @@ Blockly.JavaScript['aidude_cat_face_detection'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -384,8 +384,8 @@ Blockly.JavaScript['aidude_cat_face_detection'] = function(block) {
 //       #END
 //       if(new_data_available() == 1){
 //         uint8_t _obj[30];
-//         uint8_t counds = classification(_obj);
-//         for(int i=0;i<counds;i++){
+//         uint8_t founds = classification(_obj);
+//         for(int i=0;i<founds;i++){
 //           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
 //           int  __confidence = _obj[(i*3)+2];
 
@@ -419,8 +419,8 @@ Blockly.JavaScript['aidude_head_detection'] = function(block) {
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
-        uint8_t counds = objectdetection(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
@@ -456,8 +456,8 @@ Blockly.JavaScript['aidude_car_classification'] = function(block) {
       #END
       if(new_data_available() == 1){
         uint8_t _obj[30];
-        uint8_t counds = classification(_obj);
-        for(int i=0;i<counds;i++){
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
           int  __confidence = _obj[(i*3)+2];
 
@@ -546,14 +546,14 @@ Blockly.JavaScript['__vflip'] = function(block) {
   // TODO: Assemble JavaScript into code variable.
   var code = `vflip(${dropdown__vflip})`;
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return code;
 };
 Blockly.JavaScript['__hmirror'] = function(block) {
   var dropdown__hmirror = block.getFieldValue('_hmirror');
   // TODO: Assemble JavaScript into code variable.
   var code = `hmirror(${dropdown__hmirror})`;
   // TODO: Change ORDER_NONE to the correct strength.
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  return code;
 };
 Blockly.JavaScript['face_recognition_save'] = function(block) {
   var value__id = Blockly.JavaScript.valueToCode(block, '_id', Blockly.JavaScript.ORDER_ATOMIC);
@@ -610,6 +610,7 @@ Blockly.JavaScript['face_recognition_del'] = function(block) {
 //       `;
 //   return code;
 // };
+
 Blockly.JavaScript['save_image_data_collection'] = function(block) {
   var value_fb_fb = Blockly.JavaScript.valueToCode(block, 'fb_fb', Blockly.JavaScript.ORDER_ATOMIC);
   var value_lr_lr = Blockly.JavaScript.valueToCode(block, 'lr_lr', Blockly.JavaScript.ORDER_ATOMIC);
@@ -640,8 +641,8 @@ Blockly.JavaScript['save_image_data_collection'] = function(block) {
       \n
       `;
   return code;
-  return code;
 };
+
 Blockly.JavaScript['aidude_mobilenet_regression_custom'] = function(block) {
   var number_Focus = block.getFieldValue('Focus');
   var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
@@ -665,6 +666,75 @@ Blockly.JavaScript['aidude_mobilenet_regression_custom'] = function(block) {
         regression(_obj);
         int16_t  __class = ((int16_t)_obj[0]<<8) | _obj[1];
         ${statements_code}
+      }
+      \n
+      `;
+  return code;
+};
+
+Blockly.JavaScript['save_image_classification'] = function(block) {
+
+  var value_classID = Blockly.JavaScript.valueToCode(block, 'classID', Blockly.JavaScript.ORDER_ATOMIC);
+  var value_quality = Blockly.JavaScript.valueToCode(block, 'img_quality', Blockly.JavaScript.ORDER_ATOMIC);
+  if(value_quality > 100){
+    value_quality = 100;
+  }
+  if(value_quality < 30){
+    value_quality = 30;
+  }
+  // TODO: Assemble JavaScript into code variable.
+  var code = `
+      #EXTINC
+      #include "kbai_api.h" 
+      #END
+      #VARIABLE
+
+      #END
+      #SETUP
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      while(setmode(16) != 16){
+        delay(1000);
+      }
+      
+      #END
+      save_data_collection(${value_classID},${value_quality});
+      \n
+      `;
+  return code;
+};
+
+Blockly.JavaScript['aidude_mobilenet_classification_custom'] = function(block) {
+
+  var number_threshold = block.getFieldValue('Threshold');
+  var number_Class = block.getFieldValue('Class');
+
+  var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `
+      #EXTINC
+      #include "kbai_api.h" 
+      #END
+      #VARIABLE
+
+      #END
+      #SETUP
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      while(setmode(17) != 17 ||threshold(${number_threshold}) != ${number_threshold}){
+        delay(1000);
+      }
+      write_register(32, Class);
+      #END
+      if(new_data_available() == 1){
+        uint8_t _obj[30];
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
+          uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
+          int  __confidence = _obj[(i*3)+2];
+
+          ${statements_code}
+        }
       }
       \n
       `;
