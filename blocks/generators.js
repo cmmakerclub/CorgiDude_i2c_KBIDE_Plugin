@@ -544,14 +544,14 @@ Blockly.JavaScript['__status'] = function(block) {
 Blockly.JavaScript['__vflip'] = function(block) {
   var dropdown__vflip = block.getFieldValue('_vflip');
   // TODO: Assemble JavaScript into code variable.
-  var code = `vflip(${dropdown__vflip});`;
+  var code = `#SETUP vflip(${dropdown__vflip}); #END`;
   // TODO: Change ORDER_NONE to the correct strength.
   return code;
 };
 Blockly.JavaScript['__hmirror'] = function(block) {
   var dropdown__hmirror = block.getFieldValue('_hmirror');
   // TODO: Assemble JavaScript into code variable.
-  var code = `hmirror(${dropdown__hmirror});`;
+  var code = `#SETUP hmirror(${dropdown__hmirror}); #END`;
   // TODO: Change ORDER_NONE to the correct strength.
   return code;
 };
