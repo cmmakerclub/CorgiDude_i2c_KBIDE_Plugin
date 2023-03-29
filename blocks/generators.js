@@ -746,3 +746,101 @@ Blockly.JavaScript['aidude_mobilenet_classification_custom'] = function(block) {
       `;
   return code;
 };
+Blockly.JavaScript['custom_model_yolo2'] = function(block) {
+  var number_threshold = block.getFieldValue('Threshold');
+  var number_img_w = block.getFieldValue('img_w');
+  var number_img_h = block.getFieldValue('img_h');
+  var number_num_class = block.getFieldValue('num_class');
+  var number_anchor1 = block.getFieldValue('anchor1');
+  var number_anchor2 = block.getFieldValue('anchor2');
+  var number_anchor3 = block.getFieldValue('anchor3');
+  var number_anchor4 = block.getFieldValue('anchor4');
+  var number_anchor5 = block.getFieldValue('anchor5');
+  var number_anchor6 = block.getFieldValue('anchor6');
+  var number_anchor7 = block.getFieldValue('anchor7');
+  var number_anchor8 = block.getFieldValue('anchor8');
+  var number_anchor9 = block.getFieldValue('anchor9');
+  var number_anchor10 = block.getFieldValue('anchor10');
+  var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `
+      #EXTINC
+      #include "kbai_api.h" 
+      #END
+      #VARIABLE
+
+      #END
+      #SETUP
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      set_model_outputs_yolo2(${number_img_w},${number_img_h},${number_num_class});
+      set_anchor_yolo2(${number_anchor1},${number_anchor2},${number_anchor3},${number_anchor4},${number_anchor5},${number_anchor6},${number_anchor7},${number_anchor8},${number_anchor9},${number_anchor10});
+      while(setmode(21) != 21 || threshold(${number_threshold}) != ${number_threshold}){
+        delay(1000);
+      }
+      #END
+      if(new_data_available() == 1){
+        uint8_t _obj[60];
+        int __rw = W();
+        int __rh = H();
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
+          int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
+          int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
+          int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
+          int  __h = (_obj[(i*6)+4]*__rh)*0.01f;
+          int  __class = _obj[(i*6)+0];
+          int  __confidence = _obj[(i*6)+5];
+
+          ${statements_code}
+        }
+      }
+      \n
+      `;
+  return code;
+};
+Blockly.JavaScript['custom_model_classification'] = function(block) {
+  var number_threshold = block.getFieldValue('Threshold');
+  var number_img_w = block.getFieldValue('img_w');
+  var number_img_h = block.getFieldValue('img_h');
+  var number_num_class = block.getFieldValue('num_class');
+  var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `
+      #EXTINC
+      #include "kbai_api.h" 
+      #END
+      #VARIABLE
+
+      #END
+      #SETUP
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      set_model_outputs_classification(${number_img_w},${number_img_h},${number_num_class});
+      while(setmode(22) != 22 ||threshold(${number_threshold}) != ${number_threshold}){
+        delay(1000);
+      }
+      #END
+      if(new_data_available() == 1){
+        uint8_t _obj[30];
+        uint8_t founds = classification(_obj);
+        for(int i=0;i<founds;i++){
+          uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
+          int  __confidence = _obj[(i*3)+2];
+
+          ${statements_code}
+        }
+      }
+      \n
+      `;
+  return code;
+};
+Blockly.JavaScript['lcd_rotation'] = function(block) {
+  var dropdown_mode__ = block.getFieldValue('mode__');
+  // TODO: Assemble JavaScript into code variable.
+  var code = `#SETUP 
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      lcd_rotation(${dropdown_mode__}); #END`;
+  return code;
+};

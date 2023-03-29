@@ -535,3 +535,68 @@ Blockly.Blocks['aidude_mobilenet_regression_custom'] = {
  this.setHelpUrl("");
   }
 };
+Blockly.Blocks['custom_model_yolo2'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Custom model yolo2")
+        .appendField("Threshold")
+        .appendField(new Blockly.FieldNumber(50, 0, 100, 50), "Threshold")
+        .appendField("image size")
+        .appendField(new Blockly.FieldNumber(224, 0, 320), "img_w")
+        .appendField(new Blockly.FieldNumber(224, 0, 320), "img_h")
+        .appendField("number of classes")
+        .appendField(new Blockly.FieldNumber(1, 0, 100, 1), "num_class")
+        .appendField("anchor")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor1")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor2")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor3")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor4")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor5")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor6")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor7")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor8")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor9")
+        .appendField(new Blockly.FieldNumber(0, 0, 50), "anchor10");
+    this.appendStatementInput("code")
+        .setCheck(null);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("เอาใว้ใช้งานสำหรับ Custom model yolo2 เท่านั้น โดย Threshold หมายถึง ความน่าจะเป็นต้องถึง 50% ถึงจะแสดงผล image size ต้องใส่ค่าตามที่ได้เทรนโมเดล  number of classes คือ จำนวนคราสที่เทรนมีกี่ class  anchor คือ anchor  ต่อที่เทรนโมเดลเอามาใส่ด้วย");
+ this.setHelpUrl("");
+  }
+};
+Blockly.Blocks['custom_model_classification'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Custom model classification")
+        .appendField("Threshold")
+        .appendField(new Blockly.FieldNumber(50, 0, 100, 50), "Threshold")
+        .appendField("image size")
+        .appendField(new Blockly.FieldNumber(224, 0, 320, 224), "img_w")
+        .appendField(new Blockly.FieldNumber(224, 0, 320, 224), "img_h")
+        .appendField("number of classes")
+        .appendField(new Blockly.FieldNumber(1, 0, 1000, 1), "num_class");
+    this.appendStatementInput("code")
+        .setCheck(null);
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(0);
+ this.setTooltip("เอาใว้ใช้งานสำหรับ Custom model classification เท่านั้น โดย Threshold หมายถึง ความน่าจะเป็นต้องถึง 50% ถึงจะแสดงผล image size ต้องใส่ค่าตามที่ได้เทรนโมเดลตัวแรก W ตัวสอง H  number of classes คือ จำนวนคราสที่เทรนมีกี่ class  ");
+ this.setHelpUrl("");
+  }
+};
+Blockly.Blocks['lcd_rotation'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("LCD rotation")
+        .appendField(new Blockly.FieldDropdown([["0","0"], ["1","1"], ["2","2"], ["3","3"]]), "mode__");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
