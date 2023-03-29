@@ -37,77 +37,77 @@ Blockly.JavaScript['aidude_yolo_20_class'] = function(block) {
   return code;
 };
 
-Blockly.JavaScript['aidude_yolo_custom'] = function(block) {
-  var number_threshold = block.getFieldValue('Threshold');
-  var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
-  // TODO: Assemble JavaScript into code variable.
-  var code = `
-      #EXTINC
-      #include "kbai_api.h" 
-      #END
-      #VARIABLE
+// Blockly.JavaScript['aidude_yolo_custom'] = function(block) {
+//   var number_threshold = block.getFieldValue('Threshold');
+//   var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
+//   // TODO: Assemble JavaScript into code variable.
+//   var code = `
+//       #EXTINC
+//       #include "kbai_api.h" 
+//       #END
+//       #VARIABLE
 
-      #END
-      #SETUP
-      Wire1.begin(4, 5);
-      Wire1.setClock(100000L);
-      while(setmode(3) != 3 || threshold(${number_threshold}) != ${number_threshold}){
-        delay(1000);
-      }
-      #END
-      if(new_data_available() == 1){
-        uint8_t _obj[60];
-        int __rw = W();
-        int __rh = H();
-        uint8_t founds = objectdetection(_obj);
-        for(int i=0;i<founds;i++){
-          int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
-          int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
-          int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
-          int  __h = (_obj[(i*6)+4]*__rh)*0.01f;
-          int  __class = _obj[(i*6)+0];
-          int  __confidence = _obj[(i*6)+5];
+//       #END
+//       #SETUP
+//       Wire1.begin(4, 5);
+//       Wire1.setClock(100000L);
+//       while(setmode(3) != 3 || threshold(${number_threshold}) != ${number_threshold}){
+//         delay(1000);
+//       }
+//       #END
+//       if(new_data_available() == 1){
+//         uint8_t _obj[60];
+//         int __rw = W();
+//         int __rh = H();
+//         uint8_t founds = objectdetection(_obj);
+//         for(int i=0;i<founds;i++){
+//           int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
+//           int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
+//           int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
+//           int  __h = (_obj[(i*6)+4]*__rh)*0.01f;
+//           int  __class = _obj[(i*6)+0];
+//           int  __confidence = _obj[(i*6)+5];
 
-          ${statements_code}
-        }
-      }
-      \n
-      `;
-  return code;
-};
+//           ${statements_code}
+//         }
+//       }
+//       \n
+//       `;
+//   return code;
+// };
 
-Blockly.JavaScript['aidude_mobilenet_custom'] = function(block) {
-  var number_threshold = block.getFieldValue('Threshold');
-  var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
-  // TODO: Assemble JavaScript into code variable.
-  var code = `
-      #EXTINC
-      #include "kbai_api.h" 
-      #END
-      #VARIABLE
+// Blockly.JavaScript['aidude_mobilenet_custom'] = function(block) {
+//   var number_threshold = block.getFieldValue('Threshold');
+//   var statements_code = Blockly.JavaScript.statementToCode(block, 'code');
+//   // TODO: Assemble JavaScript into code variable.
+//   var code = `
+//       #EXTINC
+//       #include "kbai_api.h" 
+//       #END
+//       #VARIABLE
 
-      #END
-      #SETUP
-      Wire1.begin(4, 5);
-      Wire1.setClock(100000L);
-      while(setmode(3) != 3 || threshold(${number_threshold}) != ${number_threshold}){
-        delay(1000);
-      }
-      #END
-      if(new_data_available() == 1){
-        uint8_t _obj[30];
-        uint8_t founds = classification(_obj);
-        for(int i=0;i<founds;i++){
-          uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
-          int  __confidence = _obj[(i*3)+2];
+//       #END
+//       #SETUP
+//       Wire1.begin(4, 5);
+//       Wire1.setClock(100000L);
+//       while(setmode(3) != 3 || threshold(${number_threshold}) != ${number_threshold}){
+//         delay(1000);
+//       }
+//       #END
+//       if(new_data_available() == 1){
+//         uint8_t _obj[30];
+//         uint8_t founds = classification(_obj);
+//         for(int i=0;i<founds;i++){
+//           uint16_t  __class = ((uint16_t)_obj[(i*3)+0]<<8) | _obj[(i*3)+1];
+//           int  __confidence = _obj[(i*3)+2];
 
-          ${statements_code}
-        }
-      }
-      \n
-      `;
-  return code;
-};
+//           ${statements_code}
+//         }
+//       }
+//       \n
+//       `;
+//   return code;
+// };
 
 Blockly.JavaScript['aidude_mobilenet'] = function(block) {
   var number_threshold = block.getFieldValue('Threshold');
