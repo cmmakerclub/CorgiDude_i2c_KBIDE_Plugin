@@ -333,6 +333,21 @@ uint8_t hmirror(uint8_t st) {
   }
   return raw;
 }
+uint8_t lcd_rotation(uint8_t st) {
+  delay(3);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(28);
+  Wire1.write(st);
+  Wire1.endTransmission();
+  delay(3);
+  uint8_t raw = 0xff;
+  Wire1.requestFrom(0x6E, 1);    // request 6 bytes from slave device #8
+  while (Wire1.available()) { // slave may send less than requested
+    raw = Wire1.read(); // receive a byte as character
+    //    Serial.println(c);         // print the character
+  }
+  return raw;
+}
 void save_data_collection(uint8_t fb =128,uint8_t lr = 128) {
   delay(3);
   Wire1.beginTransmission(0x6E);
@@ -380,6 +395,106 @@ void write_register(uint8_t reg = 0, uint8_t val = 0) {
   Wire1.write(val);
   Wire1.endTransmission();
 
+}
+void write_register16(uint8_t reg = 0, uint16_t val = 0) {
+  delay(5);
+  byte myByteArray[2];
+  memcpy(myByteArray, &val, 2);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(reg);
+  Wire1.write(myByteArray[0]);
+  Wire1.endTransmission();
+  delay(5);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(reg+1);
+  Wire1.write(myByteArray[1]);
+  Wire1.endTransmission();
+}
+void image_size(uint16_t W = 224,uint16_t H = 224) {
+  delay(5);
+  uint8_t reg = 33;
+  byte myByteArrayw[2];
+  memcpy(myByteArrayw, &W, 2);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(reg);
+  Wire1.write(myByteArrayw[0]);
+  Wire1.write(myByteArrayw[1]);
+  Wire1.endTransmission();
+  delay(5);
+  byte myByteArrayh[2];
+  memcpy(myByteArrayh, &H, 2);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(reg+2);
+  Wire1.write(myByteArrayh[0]);
+  Wire1.write(myByteArrayh[1]);
+  Wire1.endTransmission();
+
+}
+void set_model_outputs_yolo2(uint16_t W = 224,uint16_t H = 224,uint8_t CH = 1) {
+	image_size(W,H);
+	uint8_t reg = 37;
+	uint8_t w = W/32;
+	uint8_t h = H/32;
+	uint8_t ch = 25+(CH*5);
+	// if(W%32 == 0){
+	// 	w = W/32;
+	// }
+	// if(H%32 == 0){
+	// 	h = H/32;
+	// }
+	delay(5);
+	Wire1.beginTransmission(0x6E);
+    Wire1.write(reg);
+    Wire1.write(w);
+    Wire1.endTransmission();
+    delay(5);
+    Wire1.beginTransmission(0x6E);
+    Wire1.write(reg+1);
+    Wire1.write(h);
+    Wire1.endTransmission();
+    delay(5);
+    Wire1.beginTransmission(0x6E);
+    Wire1.write(reg+2);
+    Wire1.write(ch);
+    Wire1.endTransmission();
+    delay(5);
+
+}
+void set_model_outputs_classification(uint16_t W = 224,uint16_t H = 224,uint8_t CH = 1) {
+	image_size(W,H);
+	uint8_t reg = 37;
+	uint8_t w = 1;
+	uint8_t h = 1;
+	uint8_t ch = CH;
+	delay(5);
+	Wire1.beginTransmission(0x6E);
+    Wire1.write(reg);
+    Wire1.write(w);
+    Wire1.endTransmission();
+    delay(5);
+    Wire1.beginTransmission(0x6E);
+    Wire1.write(reg+1);
+    Wire1.write(h);
+    Wire1.endTransmission();
+    delay(5);
+    Wire1.beginTransmission(0x6E);
+    Wire1.write(reg+2);
+    Wire1.write(ch);
+    Wire1.endTransmission();
+
+}
+void set_anchor_yolo2(float anchor1 = 0,float anchor2 = 0,float anchor3 = 0,float anchor4 = 0,float anchor5 = 0
+					,float anchor6 = 0,float anchor7 = 0,float anchor8 = 0,float anchor9 = 0,float anchor10 = 0) {
+	write_register16(40,anchor1*1000);
+	write_register16(42,anchor2*1000);
+	write_register16(44,anchor3*1000);
+	write_register16(46,anchor4*1000);
+	write_register16(48,anchor5*1000);
+	write_register16(50,anchor6*1000);
+	write_register16(52,anchor7*1000);
+	write_register16(54,anchor8*1000);
+	write_register16(56,anchor9*1000);
+	write_register16(58,anchor10*1000);
 }
 
 
