@@ -9,7 +9,7 @@
   "git": "https://github.com/cmmakerclub/CorgiDude_i2c_KBIDE_Plugin/",
   "author": "TONG_CMMC",
   "url": "https://www.aiiotshop.com/",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "board" : "",
   "platform": ["arduino-esp32"],
   "image" : "/static/display.PNG"
