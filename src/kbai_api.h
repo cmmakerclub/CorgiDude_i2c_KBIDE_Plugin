@@ -27,7 +27,6 @@ int8_t setmode(int8_t modes) {
   delay(3);
   Wire1.beginTransmission(0x6E);
   Wire1.write(1);
-  Wire1.write(modes);
   Wire1.endTransmission();
   delay(5);
   uint8_t raw = 0xff;
@@ -35,6 +34,20 @@ int8_t setmode(int8_t modes) {
   while (Wire1.available()) { // slave may send less than requested
     raw = Wire1.read(); // receive a byte as character
     //    Serial.println(c);         // print the character
+  }
+  if(raw != modes ){
+  	delay(3);
+  Wire1.beginTransmission(0x6E);
+  Wire1.write(1);
+  Wire1.write(modes);
+  Wire1.endTransmission();
+  delay(5);
+  raw = 0xff;
+  Wire1.requestFrom(0x6E, 1);    // request 6 bytes from slave device #8
+  while (Wire1.available()) { // slave may send less than requested
+    raw = Wire1.read(); // receive a byte as character
+    //    Serial.println(c);         // print the character
+  }
   }
   return raw;
 }
@@ -495,6 +508,22 @@ void set_anchor_yolo2(float anchor1 = 0,float anchor2 = 0,float anchor3 = 0,floa
 	write_register16(54,anchor8*1000);
 	write_register16(56,anchor9*1000);
 	write_register16(58,anchor10*1000);
+}
+void set_color_th(uint8_t color1_r =0,uint8_t color1_g =0,uint8_t color1_b =0,
+				  uint8_t color2_r =0,uint8_t color2_g =0,uint8_t color2_b =0,
+				  uint8_t color3_r =0,uint8_t color3_g =0,uint8_t color3_b =0
+	) {
+	write_register(62,color1_r);
+	write_register(63,color1_g);
+	write_register(64,color1_b);
+
+	write_register(65,color2_r);
+	write_register(66,color2_g);
+	write_register(67,color2_b);
+
+	write_register(68,color3_r);
+	write_register(69,color3_g);
+	write_register(70,color3_b);
 }
 
 

@@ -600,3 +600,42 @@ Blockly.Blocks['lcd_rotation'] = {
  this.setHelpUrl("");
   }
 };
+Blockly.Blocks['color_detection'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("color detection")
+        .appendField("class1")
+        .appendField(new Blockly.FieldColour("#f10000"), "color1")
+        .appendField("class2")
+        .appendField(new Blockly.FieldColour("#ff0000"), "color2")
+        .appendField("class3")
+        .appendField(new Blockly.FieldColour("#ff0010"), "color3");
+    this.appendStatementInput("codesssss")
+        .setCheck(null);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(285);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+Blockly.Blocks['color_detection_2'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("color detection 2")
+        .appendField("class1")
+        .appendField(new Blockly.FieldTextInput("255,255,255"), "class1")
+        .appendField("class2")
+        .appendField(new Blockly.FieldTextInput("255,255,255"), "class2")
+        .appendField("class3")
+        .appendField(new Blockly.FieldTextInput("255,255,255"), "class3");
+    this.appendStatementInput("codesssss2")
+        .setCheck(null);
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(230);
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};

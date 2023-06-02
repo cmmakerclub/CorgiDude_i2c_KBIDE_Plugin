@@ -16,7 +16,7 @@ Blockly.JavaScript['aidude_yolo_20_class'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1  && setmode(4)==4){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -127,7 +127,7 @@ Blockly.JavaScript['aidude_mobilenet'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(8)==8){
         uint8_t _obj[30];
         uint8_t founds = classification(_obj);
         for(int i=0;i<founds;i++){
@@ -160,7 +160,7 @@ Blockly.JavaScript['aidude_face_detection'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(6)==6){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -199,7 +199,7 @@ Blockly.JavaScript['aidude_face_recognition'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 ){
         uint8_t _obj[30];
         uint8_t founds = classification(_obj);
         for(int i=0;i<founds;i++){
@@ -232,7 +232,7 @@ Blockly.JavaScript['aidude_facemask_detection'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(11)==11){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -271,7 +271,7 @@ Blockly.JavaScript['aidude_hand_detection'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(12)==12){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -310,7 +310,7 @@ Blockly.JavaScript['aidude_garbage_classification'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(7)==7){
         uint8_t _obj[30];
         uint8_t founds = classification(_obj);
         for(int i=0;i<founds;i++){
@@ -343,7 +343,7 @@ Blockly.JavaScript['aidude_cat_face_detection'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(5)==5){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -415,7 +415,7 @@ Blockly.JavaScript['aidude_head_detection'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(10)==10){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -454,7 +454,7 @@ Blockly.JavaScript['aidude_car_classification'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(9)==9){
         uint8_t _obj[30];
         uint8_t founds = classification(_obj);
         for(int i=0;i<founds;i++){
@@ -667,7 +667,7 @@ Blockly.JavaScript['aidude_mobilenet_regression_custom'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      if(new_data_available() == 1 && setmode(15)==15){
         uint8_t _obj[20];
         regression(_obj);
         int16_t  __class = ((int16_t)_obj[0]<<8) | _obj[1];
@@ -779,7 +779,8 @@ Blockly.JavaScript['custom_model_yolo2'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      set_model_outputs_yolo2(${number_img_w},${number_img_h},${number_num_class});
+      if(new_data_available() == 1 && setmode(21)==21){
         uint8_t _obj[60];
         int __rw = W();
         int __rh = H();
@@ -821,7 +822,8 @@ Blockly.JavaScript['custom_model_classification'] = function(block) {
         delay(1000);
       }
       #END
-      if(new_data_available() == 1){
+      set_model_outputs_classification(${number_img_w},${number_img_h},${number_num_class});
+      if(new_data_available() == 1 && setmode(22)==22){
         uint8_t _obj[30];
         uint8_t founds = classification(_obj);
         for(int i=0;i<founds;i++){
@@ -842,5 +844,117 @@ Blockly.JavaScript['lcd_rotation'] = function(block) {
       Wire1.begin(4, 5);
       Wire1.setClock(100000L);
       lcd_rotation(${dropdown_mode__}); #END`;
+  return code;
+};
+Blockly.JavaScript['color_detection'] = function(block) {
+  var colour_color1 = block.getFieldValue('color1');
+  var colour_color2 = block.getFieldValue('color2');
+  var colour_color3 = block.getFieldValue('color3');
+  var statements_codesssss = Blockly.JavaScript.statementToCode(block, 'codesssss');
+  var colour_color1_r = "0x"+colour_color1[1]+colour_color1[2];
+  var colour_color1_g = "0x"+colour_color1[3]+colour_color1[4];
+  var colour_color1_b = "0x"+colour_color1[5]+colour_color1[6];
+
+  var colour_color2_r = "0x"+colour_color2[1]+colour_color2[2];
+  var colour_color2_g = "0x"+colour_color2[3]+colour_color2[4];
+  var colour_color2_b = "0x"+colour_color2[5]+colour_color2[6];
+
+  var colour_color3_r = "0x"+colour_color3[1]+colour_color3[2];
+  var colour_color3_g = "0x"+colour_color3[3]+colour_color3[4];
+  var colour_color3_b = "0x"+colour_color3[5]+colour_color3[6];
+  // TODO: Assemble JavaScript into code variable.
+  var code = `
+      #EXTINC
+      #include "kbai_api.h" 
+      #END
+      #VARIABLE
+
+      #END
+      #SETUP
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      set_color_th(${colour_color1_r},${colour_color1_g},${colour_color1_b},
+                   ${colour_color2_r},${colour_color2_g},${colour_color2_b},
+                   ${colour_color3_r},${colour_color3_g},${colour_color3_b});
+      while(setmode(23) != 23){
+        delay(1000);
+      }
+      #END
+      if(new_data_available() == 1 && setmode(23)==23){
+        uint8_t _obj[60];
+        int __rw = W();
+        int __rh = H();
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
+          int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
+          int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
+          int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
+          int  __h = (_obj[(i*6)+4]*__rh)*0.01f;
+          int  __class = _obj[(i*6)+0];
+          int  __confidence = _obj[(i*6)+5];
+
+          ${statements_codesssss}
+        }
+      }
+      \n
+      `;
+  return code;
+};
+Blockly.JavaScript['color_detection_2'] = function(block) {
+  var text_class1 = block.getFieldValue('class1');
+  var text_class2 = block.getFieldValue('class2');
+  var text_class3 = block.getFieldValue('class3');
+  var statements_codesssss2 = Blockly.JavaScript.statementToCode(block, 'codesssss2');
+  
+  var class1_color = text_class1.split(",");
+  var class2_color = text_class2.split(",");
+  var class3_color = text_class3.split(",");
+  var colour_color1_r = (parseInt(class1_color[0]));
+  var colour_color1_g = (parseInt(class1_color[1]));
+  var colour_color1_b = (parseInt(class1_color[2]));
+
+  var colour_color2_r = (parseInt(class2_color[0]));
+  var colour_color2_g = (parseInt(class2_color[1]));
+  var colour_color2_b = (parseInt(class2_color[2]));
+
+  var colour_color3_r = (parseInt(class3_color[0]));
+  var colour_color3_g = (parseInt(class3_color[1]));
+  var colour_color3_b = (parseInt(class3_color[2]));
+  // TODO: Assemble JavaScript into code variable.
+  var code = `
+      #EXTINC
+      #include "kbai_api.h" 
+      #END
+      #VARIABLE
+
+      #END
+      #SETUP
+      Wire1.begin(4, 5);
+      Wire1.setClock(100000L);
+      set_color_th(${colour_color1_r},${colour_color1_g},${colour_color1_b},
+                   ${colour_color2_r},${colour_color2_g},${colour_color2_b},
+                   ${colour_color3_r},${colour_color3_g},${colour_color3_b});
+      while(setmode(23) != 23){
+        delay(1000);
+      }
+      #END
+      if(new_data_available() == 1 && setmode(23)==23){
+        uint8_t _obj[60];
+        int __rw = W();
+        int __rh = H();
+        uint8_t founds = objectdetection(_obj);
+        for(int i=0;i<founds;i++){
+          int  __x = (_obj[(i*6)+1]*__rw)*0.01f;
+          int  __y = (_obj[(i*6)+2]*__rh)*0.01f;
+          int  __w = (_obj[(i*6)+3]*__rw)*0.01f;
+          int  __h = (_obj[(i*6)+4]*__rh)*0.01f;
+          int  __class = _obj[(i*6)+0];
+          int  __confidence = _obj[(i*6)+5];
+
+          ${statements_codesssss2}
+        }
+      }
+      \n
+      `;
   return code;
 };
